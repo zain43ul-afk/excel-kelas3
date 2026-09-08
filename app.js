@@ -265,13 +265,15 @@
   }
 
   function switchLoginMode(mode){
-    const student=mode==="student";
-    $("#studentTab").classList.toggle("active",student);
-    $("#teacherTab").classList.toggle("active",!student);
-    $("#studentLogin").classList.toggle("hidden",!student);
-    $("#teacherLogin").classList.toggle("hidden",student);
-  }
+    const student = mode === "student";
 
+    $("#studentTab").classList.toggle("active", student);
+    $("#teacherTab").classList.toggle("active", !student);
+
+    $(".student-home-grid").classList.toggle("hidden", !student);
+    $("#teacherLogin").classList.toggle("hidden", student);
+  }
+  
   async function enterFullscreen(){
     try{
       if(!document.fullscreenElement) await document.documentElement.requestFullscreen();
