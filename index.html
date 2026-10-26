@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelas Excel & Word Interaktif</title>
+  <meta name="theme-color" content="#0c4f3f" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <style>
+/* ==========================================================
+   SOURCE: style.css + student-menu.css + word-suite.css
+   ========================================================== */
+:root{
+  --green:#0c4f3f;
+  --green-2:#0a654d;
+  --green-3:#18b978;
+  --paper:#f4f7f4;
+  --card:#ffffff;
+  --ink:#14211d;
+  --muted:#65746f;
+  --line:#dce5e1;
+  --shadow:0 16px 45px rgba(12,79,63,.12);
+  --radius:24px;
+  --excel:#107c41;
+  --app-topbar-height:112px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f7f4;color:var(--ink)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+body{min-width:320px;background:linear-gradient(180deg,#f8fdfb 0%,#effaf5 100%) !important}
+.topbar{
+  position:sticky;top:0;z-index:50;height:112px;padding:0 max(28px,calc((100vw - 1680px)/2));
+  display:flex;align-items:center;justify-content:space-between;
+  background:radial-gradient(ellipse at 1% -35%,rgba(56,224,151,.48) 0 14%,transparent 14.3%),radial-gradient(ellipse at 66% 115%,rgba(17,162,111,.26) 0 22%,transparent 22.4%),linear-gradient(110deg,#08785b 0%,#056047 42%,#03463b 100%);
+  color:white;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 8px 28px rgba(3,54,43,.15)
+}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-icon{width:62px;height:62px;border-radius:19px;background:linear-gradient(145deg,#23d893,#0bae73);display:grid;place-items:center;font-size:34px;font-weight:900;border:1px solid rgba(255,255,255,.2)}
+.brand h1{margin:0;font-size:27px;letter-spacing:-.03em}
+.brand p{margin:3px 0 0;color:#cce9df;font-size:15px}
+.topbar-actions{display:flex;align-items:center;gap:10px}
+.room-badge{display:flex;align-items:center;gap:10px;padding:11px 20px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.07);font-weight:700;font-size:14px}
+.room-badge span{width:10px;height:10px;border-radius:50%;background:#54e5ac;box-shadow:0 0 0 5px rgba(84,229,172,.1)}
+.page-shell{width:100%;max-width:1900px;margin:0 auto;min-height:calc(100vh - 112px);padding:26px clamp(22px,3vw,58px) 30px}
+.view{display:none}.view.active{display:block}
+.hidden{display:none!important}
+label{font-size:13px;font-weight:800;color:#17231f;display:grid;gap:7px}
+input,select,textarea{width:100%;border:1px solid #cfdcd7;border-radius:12px;padding:12px 13px;background:#fbfdfc;outline:none;color:#17231f}
+.primary-btn,.ghost-btn{border-radius:12px;padding:12px 17px;border:1px solid transparent;font-weight:800;transition:.2s}
+.primary-btn{background:linear-gradient(135deg,#13a874,#07865c);color:#fff}
+.ghost-btn{background:#fff;border-color:#cddbd6;color:#30423c}
+
+/* Student Workspace & Exercise Cards */
+#studentView .workspace-head{
+  background:linear-gradient(135deg,#fff 0%,#fbfffd 58%,#f1fbf6 100%);
+  border:1px solid #d4e9df;border-radius:29px;padding:24px 28px;
+  box-shadow:0 18px 45px rgba(8,83,61,.10);margin-bottom:22px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap
+}
+#studentIdentity{margin:6px 0;font-size:32px;font-weight:900;color:#09243a}
+#studentExerciseNav.exercise-nav{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:0 0 22px
+}
+.student-window-card{
+  --c:#08aa70;--bg:#effcf5;--bd:#88dfb8;
+  position:relative;text-align:left;display:flex;flex-direction:column;
+  min-height:280px;padding:24px;border:1.5px solid var(--bd);
+  border-radius:23px;background:linear-gradient(145deg,#fff 0%,var(--bg) 100%);
+  color:#10241d;box-shadow:0 9px 22px rgba(12,61,47,.075);transition:.2s
+}
+.student-window-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(8,67,48,.13)}
+.student-window-card.theme-blue{--c:#2460ef;--bg:#eef4ff;--bd:#a9c7ff}
+.student-window-card.theme-purple{--c:#7a23ee;--bg:#f5f0ff;--bd:#d0b6ff}
+.student-window-card.theme-cyan{--c:#0b98b8;--bg:#ecfbfd;--bd:#8ee5ef}
+.student-window-card.theme-orange{--c:#f36f1a;--bg:#fff7ed;--bd:#fdc698}
+.student-window-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.student-window-icon{width:56px;height:56px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:900}
+.student-score-badge{padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.85);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);display:flex;align-items:baseline;gap:6px}
+.student-score-badge small{font-size:10px;font-weight:900;color:var(--c)}
+.student-score-badge strong{font-size:22px;font-weight:950;color:var(--c)}
+.student-window-module-tag{display:inline-flex;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:900;text-transform:uppercase;margin-bottom:8px;width:fit-content;background:color-mix(in srgb,var(--c) 12%,white);color:var(--c);border:1px solid color-mix(in srgb,var(--c) 26%,transparent)}
+.student-window-card>strong{font-size:21px;line-height:1.2;margin-bottom:8px;color:#0c2a42}
+.student-window-card>small{font-size:14px;line-height:1.5;color:#59758e;margin-bottom:18px}
+.student-window-action{margin-top:auto;display:grid;place-items:center;min-height:48px;border-radius:12px;background:var(--c);color:#fff;font-size:15px;font-weight:800}
+
+/* Exercise Full Window */
+body.exercise-window-open{overflow:hidden!important}
+body.exercise-window-open #exercisePanel{
+  display:block!important;position:fixed!important;top:var(--app-topbar-height)!important;right:0!important;bottom:0!important;left:0!important;
+  z-index:9990!important;overflow-y:auto!important;background:#f3f7f5!important;padding:22px clamp(16px,4vw,64px) 60px!important
+}
+.l2-window-header{
+  max-width:1500px;margin:0 auto 16px;display:grid;grid-template-columns:54px minmax(0,1fr) auto minmax(220px,320px);
+  align-items:center;gap:16px;background:#fff;border:1px solid #dbe5e1;border-top:6px solid #185abd;border-radius:16px;padding:18px 22px;
+  box-shadow:0 10px 26px rgba(8,65,49,.12);position:sticky;top:0;z-index:60
+}
+.exercise-back-btn{width:44px;height:44px;border-radius:14px;background:#f4f7f6;border:1px solid #c9d7d2;color:#36574b;font-size:26px;font-weight:800;display:grid;place-items:center}
+.exercise-score-card{padding:10px 14px;border-radius:13px;border:1px solid #d9e5e0;background:#f7fbf9;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
+.exercise-score-card small{font-size:9px;font-weight:900;color:#667a72}
+.exercise-score-card strong{font-size:28px;font-weight:950;color:#185abd}
+.exercise-score-card span{grid-column:1/-1;font-size:9px;color:#82928c}
+.l2-window-progress{display:grid;gap:6px}
+.l2-window-progress>div{display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:#4a5d56}
+.l2-window-progress>span{height:8px;border-radius:999px;background:#e1e8ee;overflow:hidden}
+.l2-window-progress>span i{display:block;height:100%;background:#185abd}
+
+.l2-layout{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.l2-main{display:grid;gap:20px;min-width:0}
+.l2-sidebar{display:grid;gap:16px;position:sticky;top:100px}
+.l2-section-card,.l2-side-card,.l2-participant,.l2-quick-tip{border-radius:16px;border:1px solid #dbe4ee;background:#fff;padding:20px}
+.l2-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}
+.l2-section-head h3{margin:0 0 6px;font-size:18px;color:#15233c}
+.l2-section-head p{margin:0;font-size:13px;color:#5d708c;line-height:1.5}
+.l2-section-head>span{border:1px solid #4ab6ff;background:#f0f7ff;color:#1858da;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;white-space:nowrap}
+.l2-participant{background:#074d3d;color:#fff;border:0}
+.l2-participant small{display:block;color:#66efb7;font-weight:800;letter-spacing:.1em;margin-bottom:8px}
+.l2-participant h4{margin:0 0 4px;font-size:20px}
+.l2-participant p{margin:0 0 16px;color:#bfe1d6;font-size:13px}
+.l2-participant button{width:100%;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:9px;background:rgba(255,255,255,.16);color:#fff;font-weight:800}
+.l2-check-all{width:100%;height:52px;border:0;border-radius:12px;background:#087d59;color:#fff;font-weight:800;font-size:15px}
+
+/* Microsoft Word 365 Simulator */
+.msw-window{border:1px solid #b8c9e0;border-radius:14px;background:#f3f2f1;overflow:hidden;box-shadow:0 14px 36px rgba(16,42,86,.14);font-family:"Segoe UI",Inter,system-ui,sans-serif}
+.msw-titlebar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 14px;background:linear-gradient(90deg,#185abd 0%,#2b579a 60%,#103f8a 100%);color:#fff;font-size:12px}
+.msw-app-logo{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:5px;background:#fff;color:#185abd;font-weight:900}
+.msw-ribbon-tabs{display:flex;gap:4px;padding:6px 12px 0;background:#185abd}
+.msw-ribbon-tab{border:0;border-radius:6px 6px 0 0;padding:7px 14px;background:transparent;color:rgba(255,255,255,.9);font-size:12px;font-weight:600}
+.msw-ribbon-tab.active{background:#fff;color:#185abd;font-weight:800}
+.msw-ribbon-body{display:flex;flex-wrap:wrap;gap:10px;padding:10px 14px;background:#fff;border-bottom:1px solid #d2d0ce;align-items:center}
+.msw-ribbon-group{display:flex;flex-direction:column;justify-content:space-between;padding-right:12px;border-right:1px solid #e1dfdd;gap:6px}
+.msw-group-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.msw-group-caption{font-size:10px;font-weight:700;color:#605e5c;text-align:center}
+.msw-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:30px;height:30px;padding:0 8px;border:1px solid #d2d0ce;border-radius:5px;background:#fff;color:#201f1e;font-size:12px;font-weight:700}
+.msw-icon-btn:hover{background:#edebe9}
+.msw-icon-btn.active{background:#cfe4fa;border-color:#0078d4;color:#004578}
+.msw-select{height:30px;padding:0 8px;border:1px solid #8a8886;border-radius:5px;background:#fff;font-size:12px;font-weight:700;width:auto}
+.msw-workspace{padding:24px 18px;background:#e1dfdd;display:flex;justify-content:center}
+.msw-page{width:min(860px,100%);min-height:540px;background:#fff;border:1px solid #c8c6c4;box-shadow:0 10px 28px rgba(0,0,0,.14);padding:36px 42px;color:#201f1e;transition:.2s}
+.msw-page.landscape{width:min(980px,100%)}
+.msw-page.margin-narrow{padding:20px 24px}
+.msw-page.margin-wide{padding:44px 68px}
+.msw-page.cols-2 .msw-live-editor{column-count:2;column-gap:28px}
+
+.msw-doc-block{padding:16px;border:2px solid #185abd;border-radius:10px;background:#f8fbff}
+.msw-doc-block.completed{border-color:#16a34a;background:#f0fdf4}
+.msw-doc-block-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px dashed #cbd5e1}
+.msw-doc-block-title{display:flex;align-items:center;gap:8px;font-weight:800;color:#1e3a8a;font-size:14px}
+.msw-doc-num-pill{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:#185abd;color:#fff;font-size:12px;font-weight:900}
+.msw-block-btn{padding:6px 12px;border-radius:6px;border:1.5px solid #2563eb;background:#eff6ff;color:#1d4ed8;font-size:12px;font-weight:800}
+.msw-block-btn.is-blocked{background:#1d4ed8;color:#fff}
+
+/* 4-Paragraph Target Prompt Box */
+.msw-doc-target-prompt{
+  margin-bottom:14px;padding:16px 18px;border-radius:8px;background:#ffffff;border:1px solid #cbd5e1;
+  font-size:13.5px;line-height:1.75;color:#1e293b;user-select:none
+}
+.msw-doc-target-prompt .prompt-badge{
+  display:inline-block;margin-bottom:10px;padding:4px 10px;border-radius:6px;background:#dbeafe;color:#1e40af;font-size:11px;font-weight:800
+}
+.msw-target-paragraphs p{
+  margin:0 0 12px;text-align:justify;text-indent:32px;font-family:Calibri,"Segoe UI",sans-serif;font-size:14px;color:#0f172a
+}
+.msw-target-paragraphs p:last-child{margin-bottom:0}
+
+.msw-live-editor{
+  width:100%;min-height:360px;border:1.5px solid #94a3b8;border-radius:8px;padding:16px 18px;
+  background:#fff;color:#0f172a;font-size:14px;line-height:1.75;resize:vertical;
+  font-family:Calibri,"Segoe UI",sans-serif;white-space:pre-wrap
+}
+.msw-live-editor.is-blocked{background:#dbeafe!important;border-color:#1d4ed8!important;box-shadow:0 0 0 3px rgba(37,99,235,.22)!important}
+.msw-live-editor.has-alinea{text-indent:32px}
+.msw-diff-helper{margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:700;background:#f8fafc;color:#334155;border:1px solid #cbd5e1}
+.msw-diff-helper.ok{background:#dcfce7;color:#15803d;border-color:#86efac}
+.msw-diff-helper.warn{background:#fef3c7;color:#b45309;border-color:#fde68a}
+.msw-check-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.msw-check-pill{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;background:#f1f5f9;color:#475569}
+.msw-check-pill.ok{background:#dcfce7;color:#15803d}
+.msw-check-pill.pending{background:#fef3c7;color:#b45309}
+.msw-statusbar{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;background:#185abd;color:#fff;font-size:11px;font-weight:600}
+.toast{position:fixed;right:24px;bottom:24px;z-index:10000;background:#10251e;color:#fff;padding:13px 18px;border-radius:12px;font-weight:800;font-size:13px;box-shadow:0 15px 35px rgba(0,0,0,.25)}
+
+@media(max-width:1100px){
+  #studentExerciseNav.exercise-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .l2-layout{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  #studentExerciseNav.exercise-nav{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">▦</div>
+        <div>
+          <h1>Kelas Excel & Word Interaktif</h1>
+          <p>Latihan 1–16: Microsoft Excel, Microsoft Word (1 Nomor 4 Paragraf Tanpa Poin B), Algoritma & Coding</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="room-badge"><span></span>Mode Siswa Aktif</div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section id="studentView" class="view active">
+        <div class="workspace-head">
+          <div>
+            <span style="color:#07835e;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em">Daftar Latihan Interaktif</span>
+            <h2 id="studentIdentity">Siswa Kelas Interaktif</h2>
+            <p id="studentStatusLine" style="margin:0;color:#587188;font-size:14px">
+              Latihan 9–16 telah diperbarui: <strong>Poin B (Pertanyaan) dihapus</strong> dan <strong>Bagian A berisi 1 nomor dengan 4 paragraf langsung (@ ±100 kata)</strong>.
+            </p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <select id="quickJumpSelect" style="width:280px;font-weight:700" aria-label="Pilih Latihan">
+              <option value="">-- Lompat Cepat ke Latihan 9-16 --</option>
+              <option value="9">Latihan 9: Word — Font & Tipografi Dasar</option>
+              <option value="10">Latihan 10: Word — Paragraf, Perataan & Alinea</option>
+              <option value="11">Latihan 11: Word — Spasi Baris & Tata Letak</option>
+              <option value="12">Latihan 12: Word — Page Setup, Margin & Kolom</option>
+              <option value="13">Latihan 13: Word — Struktur Naskah & Dokumen</option>
+              <option value="14">Latihan 14: Word — Header, Footer & Ilustrasi</option>
+              <option value="15">Latihan 15: Word — Penyuntingan Naskah Akademik</option>
+              <option value="16">Latihan 16: Word — Proyek Dokumen Terpadu</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="studentExerciseNav" class="exercise-nav"></div>
+        <section id="exercisePanel" class="exercise-panel hidden"></section>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script>
+// ============================================================================
+// DATA LATIHAN 1 - 16
+// Latihan 9-16: Poin B (Pertanyaan) DIHILANGKAN.
+// Hanya berisi 1 Nomor dengan 4 Paragraf langsung, masing-masing sekitar 100 kata.
+// ============================================================================
+
+const WORD_EXERCISES_9_TO_16 = {
+  9: {
+    no: 9,
+    title: "Word: Format Font & Tipografi",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dan terapkan pemformatan Font pada naskah.",
+    theme: "theme-blue",
+    icon: "W",
+    moduleTag: "Microsoft Word • Latihan 9",
+    docTitle: "Latihan_09_Tipografi_Dokumen.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Times New Roman",
+      fontSize: "12",
+      bold: true,
+      italic: false,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true
+    },
+    formatLabel: "Font: Times New Roman | Ukuran: 12 pt | Tebal (Bold) | Rata Kiri-Kanan (Justify) | Spasi: 1.5 | Alinea (Tab)",
+    paragraphs: [
+      "Perkembangan teknologi informasi pada era modern telah mengubah cara manusia bekerja dan berkomunikasi dalam kehidupan sehari-hari. Komputer kini menjadi perangkat utama yang wajib dikuasai oleh setiap pelajar maupun pekerja profesional di berbagai bidang industri. Salah satu program pengolah kata yang paling banyak digunakan di seluruh dunia adalah perangkat lunak perkantoran modern. Melalui penguasaan aplikasi pengolah kata yang baik, seseorang dapat menyusun surat resmi, laporan kegiatan, karya tulis ilmiah, hingga dokumen administrasi dengan tata letak yang rapi. Oleh sebab itu, keterampilan mengetik secara cepat dan tepat menjadi modal dasar yang sangat berharga bagi seluruh generasi muda Indonesia masa kini.",
+      "Pengaturan huruf atau tipografi merupakan langkah pertama yang harus diperhatikan ketika menyusun sebuah naskah dokumen resmi di komputer. Pemilihan jenis huruf yang tepat seperti Times New Roman atau Calibri akan membuat tulisan terlihat jauh lebih formal dan mudah dibaca oleh penerima surat. Selain jenis huruf, ukuran teks juga wajib disesuaikan dengan fungsi bagian naskah, misalnya ukuran empat belas poin untuk judul utama dan dua belas poin untuk isi paragraf. Penggunaan ukuran huruf yang konsisten pada seluruh halaman dokumen mencerminkan ketelitian serta sikap profesional dari penulis naskah tersebut dalam menyajikan informasi penting secara jelas, terstruktur, dan juga sangat tertib.",
+      "Fitur penebalan huruf atau bold memiliki fungsi khusus untuk memberikan penekanan kuat pada kata kunci maupun judul bab di dalam dokumen. Sementara itu, format cetak miring atau italic selalu digunakan ketika penulis mencantumkan istilah asing maupun kalimat kutipan penting dari bahasa daerah. Adapun garis bawah atau underline sering dipakai untuk menandai bagian subjudul agar tampak lebih menonjol dibandingkan kalimat biasa di sekitarnya. Ketiga atribut pemformatan dasar ini tidak boleh digunakan secara berlebihan agar tampilan halaman kertas tetap bersih dan nyaman dipandang mata. Sebelum menerapkan perubahan gaya huruf, pengguna harus memblok teks sasaran terlebih dahulu dengan benar dan sangat cermat.",
+      "Kedisiplinan dalam memeriksa kembali hasil ketikan sangat menentukan kualitas akhir dari sebuah dokumen yang akan dicetak atau dikirimkan. Setiap kata harus diperiksa ejaannya supaya tidak terdapat kesalahan pengetikan huruf maupun tanda baca seperti titik dan koma di akhir kalimat. Penulis yang mahir selalu memastikan bahwa spasi antar kata hanya berjumlah satu ketukan dan tidak ada baris kosong yang terbuang percuma. Dengan berlatih mengetik empat paragraf utuh secara tekun, kemampuan jari tangan dalam mengenali posisi tombol papan ketik akan meningkat pesat. Hasilnya, pekerjaan pembuatan dokumen sekolah maupun kantor dapat diselesaikan secara efektif, efisien, akurat, serta tepat pada waktunya."
+    ]
+  },
+  10: {
+    no: 10,
+    title: "Word: Paragraf, Perataan & Alinea",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dengan perataan Justify dan Alinea baris pertama.",
+    theme: "theme-blue",
+    icon: "¶",
+    moduleTag: "Microsoft Word • Latihan 10",
+    docTitle: "Latihan_10_Paragraf_dan_Alinea.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Calibri",
+      fontSize: "12",
+      bold: false,
+      italic: false,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true
+    },
+    formatLabel: "Font: Calibri | Ukuran: 12 pt | Rata Kiri-Kanan (Justify) | Spasi: 1.5 | Alinea Pertama (Tab)",
+    paragraphs: [
+      "Penyusunan paragraf yang rapi merupakan kunci utama dalam menciptakan dokumen karya tulis yang nyaman dibaca oleh semua kalangan masyarakat. Sebuah paragraf yang baik harus memiliki satu gagasan pokok yang didukung oleh beberapa kalimat penjelas yang saling berkaitan secara padu dan logis. Dalam aturan penulisan bahasa Indonesia yang baku, setiap awal paragraf baru lazimnya ditulis menjorok ke dalam atau dikenal dengan istilah alinea pertama. Pengaturan posisi menjorok ini dapat dilakukan secara praktis menggunakan tombol Tab pada papan ketik maupun melalui penggeser First Line Indent pada penggaris dokumen. Cara otomatis tersebut menjamin jarak lekukan setiap alinea tampak seragam dan presisi.",
+      "Selain pengaturan lekukan awal baris, perataan teks atau alignment juga memegang peranan penting dalam menjaga keindahan visual halaman kertas. Terdapat empat jenis perataan utama pada aplikasi pengolah kata, yaitu rata kiri, rata tengah, rata kanan, serta rata kiri dan kanan atau justify. Untuk penulisan isi naskah laporan resmi dan makalah akademik, perataan justify sangat dianjurkan karena membuat tepi kiri maupun tepi kanan tulisan tampak lurus sejajar. Sementara itu, perataan tengah biasanya dikhususkan bagi penulisan judul bab, sedangkan rata kanan sering dimanfaatkan untuk menempatkan informasi tanggal surat serta tanda tangan pejabat di bagian sudut bawah lembaran naskah resmi.",
+      "Kesalahan umum yang sering dilakukan oleh pemula saat membuat alinea adalah menekan tombol spasi berkali-kali pada awal kalimat pertama. Kebiasaan kurang tepat tersebut menyebabkan batas lekukan antar paragraf menjadi tidak sejajar ketika jenis atau ukuran huruf diubah di kemudian hari. Dengan memanfaatkan fitur indentasi otomatis pada menu Paragraph, struktur naskah akan tetap terjaga kerapiannya meskipun dokumen disunting berulang kali. Pengguna juga dapat mengatur jarak tambahan sebelum dan sesudah paragraf agar perpindahan antar pokok pikiran terlihat lebih jelas. Penguasaan teknik tata letak paragraf ini sangat membantu siswa dalam menghasilkan tugas makalah sekolah yang memenuhi standar penulisan ilmiah nasional.",
+      "Ketekunan berlatih mengetik naskah panjang yang terdiri atas empat paragraf penuh akan melatih konsentrasi serta ketahanan jari tangan saat bekerja. Setiap kalimat di dalam paragraf wajib disusun mengikuti kaidah tata bahasa yang benar dengan memperhatikan penggunaan huruf kapital pada awal kalimat dan nama tempat. Setelah seluruh teks selesai diketik, langkah pemeriksaan akhir tetap harus dijalankan guna memastikan tidak ada kata yang terlewat atau salah eja. Dokumen yang memiliki susunan alinea teratur dan perataan kiri kanan yang seimbang pasti memberikan kesan positif bagi pembaca. Mari terus tingkatkan keterampilan mengolah dokumen digital secara mandiri, disiplin, teliti, serta penuh tanggung jawab."
+    ]
+  },
+  11: {
+    no: 11,
+    title: "Word: Spasi Baris & Tata Letak Naskah",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dengan pengaturan Line Spacing 1.5 dan format rapi.",
+    theme: "theme-cyan",
+    icon: "↕",
+    moduleTag: "Microsoft Word • Latihan 11",
+    docTitle: "Latihan_11_Spasi_Baris_Dokumen.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Arial",
+      fontSize: "12",
+      bold: false,
+      italic: true,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true
+    },
+    formatLabel: "Font: Arial | Ukuran: 12 pt | Miring (Italic) | Rata Kiri-Kanan (Justify) | Spasi Baris: 1.5 | Alinea (Tab)",
+    paragraphs: [
+      "Jarak antar baris atau line spacing adalah salah satu pengaturan tata letak yang sangat memengaruhi tingkat keterbacaan sebuah dokumen tercetak. Apabila jarak antar baris diatur terlalu rapat, mata pembaca akan cepat merasa lelah karena barisan huruf terlihat saling bertumpukan di atas kertas. Sebaliknya, jika jarak spasi dibuat terlalu renggang, halaman dokumen akan tampak kosong dan memboroskan banyak lembaran kertas saat dicetak. Oleh karena itu, standar penulisan dokumen akademik dan laporan resmi di Indonesia umumnya menetapkan ukuran spasi satu koma lima baris. Pengaturan ini memberikan ruang bernapas yang ideal bagi mata pembaca sekaligus memudahkan pemberian catatan koreksi pada naskah.",
+      "Pengaturan jarak spasi pada program pengolah kata tidak hanya terbatas pada jarak antar baris di dalam satu paragraf yang sama. Penulis juga perlu memahami fungsi pengaturan jarak sebelum paragraf atau space before serta jarak sesudah paragraf atau space after. Fitur ini berfungsi memberikan pemisah otomatis setiap kali tombol Enter ditekan untuk memulai paragraf baru tanpa perlu menekan Enter dua kali. Kebiasaan menekan tombol Enter ganda untuk memberi jarak kosong antar paragraf sebaiknya dihindari karena dapat merusak kerapian halaman ketika naskah berpindah lembar. Penggunaan pengaturan spasi otomatis membuat tata wajah dokumen menjadi jauh lebih konsisten dari halaman pertama hingga terakhir.",
+      "Dalam dunia pendidikan dan perkantoran modern, kepatuhan terhadap pedoman format penulisan merupakan wujud nyata dari sikap tertib administrasi. Setiap instansi maupun sekolah biasanya memiliki aturan baku mengenai jenis huruf, ukuran teks, batas tepi kertas, hingga jarak spasi baris yang wajib dipatuhi. Misalnya, penulisan karya ilmiah siswa sering mensyaratkan penggunaan huruf Arial atau Times New Roman berukuran dua belas poin dengan spasi satu koma lima. Apabila aturan teknis tersebut diikuti dengan cermat sejak awal pengetikan, penulis tidak perlu menghabiskan waktu lama untuk merapikan ulang naskah yang sudah selesai ditulis. Efisiensi waktu kerja pun dapat tercapai secara optimal.",
+      "Melalui latihan mengetik satu nomor yang memuat empat paragraf utuh ini, siswa dilatih untuk memadukan kecepatan mengetik dengan ketepatan pemformatan naskah. Sebelum memilih ukuran spasi baris pada pita menu, pastikan seluruh teks telah diblok secara menyeluruh agar perubahan berlaku merata pada semua paragraf. Perhatikan pula penggunaan tanda baca titik dan koma yang harus menempel langsung pada kata sebelumnya diikuti oleh satu ketukan spasi. Dengan ketelitian tinggi serta latihan yang berkesinambungan, setiap siswa pasti mampu menyusun dokumen digital berkualitas unggul yang rapi, mudah dipahami, serta siap dipresentasikan di hadapan guru maupun rekan sekelas dengan penuh percaya diri."
+    ]
+  },
+  12: {
+    no: 12,
+    title: "Word: Page Setup, Margin & Orientasi",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dan atur tata letak halaman (Layout).",
+    theme: "theme-purple",
+    icon: "▭",
+    moduleTag: "Microsoft Word • Latihan 12",
+    docTitle: "Latihan_12_Page_Setup_Margin.docx",
+    defaultTab: "layout",
+    reqs: {
+      fontFamily: "Times New Roman",
+      fontSize: "12",
+      bold: false,
+      italic: false,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true,
+      orientation: "landscape",
+      margins: "narrow"
+    },
+    formatLabel: "Layout: Orientation Landscape | Margins: Narrow | Font: Times New Roman 12 pt | Justify | Spasi 1.5 | Alinea",
+    paragraphs: [
+      "Pengaturan halaman atau page setup merupakan tahapan persiapan paling mendasar yang wajib dilakukan sebelum seseorang mulai mengetik dokumen baru. Di dalam menu tata letak halaman, pengguna dapat menentukan batas tepi kertas atau margins, arah kertas atau orientation, serta ukuran lembaran kertas atau size. Penentuan ukuran kertas seperti A4 atau Legal sejak awal kerja sangat penting agar susunan baris dan paragraf tidak berubah berantakan ketika dokumen hendak dicetak melalui mesin pencetak. Apabila ukuran kertas baru diubah setelah seluruh naskah selesai diketik, maka posisi halaman dan tata letak paragraf biasanya akan bergeser sehingga memerlukan perbaikan ulang yang memakan waktu.",
+      "Batas tepi kertas atau margins berfungsi mengatur jarak kosong antara pinggiran fisik kertas dengan area teks utama di bagian atas, bawah, kiri, dan kanan. Dalam penyusunan laporan resmi maupun skripsi yang akan dijilid, batas tepi sebelah kiri umumnya dibuat lebih lebar dibandingkan sisi lainnya agar huruf tidak tertutup oleh jepitan jilid buku. Selain batas normal, aplikasi pengolah kata juga menyediakan pilihan batas sempit atau narrow untuk memuat lebih banyak tulisan di dalam satu halaman kertas. Pemilihan batas tepi yang proporsional akan menjaga keseimbangan visual dokumen sekaligus melindungi teks penting agar tidak terpotong saat proses pencetakan berlangsung di kertas.",
+      "Arah hadap kertas atau page orientation terbagi menjadi dua pilihan utama, yaitu posisi tegak lurus yang disebut portrait dan posisi melebar mendatar yang disebut landscape. Orientasi portrait hampir selalu digunakan untuk penulisan surat dinas, makalah, novel, serta dokumen narasi standar sehari-hari. Sebaliknya, orientasi landscape sangat dibutuhkan ketika penulis hendak menyajikan tabel data yang memiliki banyak kolom, bagan organisasi, sertifikat penghargaan, maupun brosur informasi. Kemampuan memilih orientasi halaman yang tepat sesuai kebutuhan isi naskah menunjukkan pemahaman teknis yang matang dari seorang operator komputer dalam mengelola berbagai jenis dokumen administrasi modern secara luwes, rapi, dan juga tepat guna.",
+      "Pada latihan kali ini, peserta didik ditugaskan mengetik empat paragraf lengkap sekaligus mempraktikkan pengaturan tata letak halaman secara langsung pada simulator. Selain mengatur orientasi mendatar dan margin sempit pada tab Layout, peserta tetap harus menerapkan format paragraf rata kiri kanan beserta lekukan alinea pertama. Ketelitian dalam membaca setiap kata pada naskah sumber sangat diperlukan agar tidak terjadi kekeliruan ejaan maupun kekurangan jumlah kata pada masing-masing paragraf. Setelah seluruh rangkaian teks selesai diketik dan diformat sesuai instruksi kerja, periksa kembali tampilan lembaran dokumen secara menyeluruh untuk memastikan seluruh indikator penilaian telah berstatus lengkap dan benar."
+    ]
+  },
+  13: {
+    no: 13,
+    title: "Word: Struktur Naskah & Dokumen Resmi",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) mengenai penyusunan struktur dokumen terpadu.",
+    theme: "theme-purple",
+    icon: "⊞",
+    moduleTag: "Microsoft Word • Latihan 13",
+    docTitle: "Latihan_13_Struktur_Naskah_Resmi.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Calibri",
+      fontSize: "12",
+      bold: true,
+      italic: false,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.15",
+      alinea: true
+    },
+    formatLabel: "Font: Calibri | Ukuran: 12 pt | Tebal (Bold) | Rata Kiri-Kanan (Justify) | Spasi: 1.15 | Alinea (Tab)",
+    paragraphs: [
+      "Penyajian data dan informasi di dalam dokumen resmi membutuhkan struktur penulisan yang sistematis agar pesan utama dapat dipahami secara cepat oleh pembaca. Dalam kegiatan administrasi sekolah maupun perusahaan, sebuah laporan kegiatan yang lengkap selalu disusun berdasarkan urutan bagian yang jelas mulai dari pendahuluan, isi pembahasan, hingga kesimpulan penutup. Setiap bagian tersebut dijabarkan melalui rangkaian paragraf yang saling terhubung dengan bahasa Indonesia yang baik, benar, serta lugas. Kerapian struktur dokumen sangat membantu pimpinan organisasi maupun guru pembimbing dalam menilai keakuratan informasi yang disampaikan tanpa harus merasa bingung oleh susunan kalimat yang berbelit-belit atau kurang teratur.",
+      "Selain menggunakan uraian paragraf naratif, dokumen laporan sering kali menyajikan rincian data keuangan, jadwal kegiatan, maupun daftar inventaris barang secara terperinci. Agar rincian informasi tersebut tidak membingungkan pembaca, penulis harus mampu menguraikan setiap fakta secara berurutan dan konsisten di dalam badan naskah. Pemilihan jenis huruf Calibri berukuran dua belas poin dengan jarak spasi satu koma lima belas sering menjadi standar favorit pada dokumen bisnis modern karena terlihat ringkas namun tetap jelas dibaca. Penambahan efek huruf tebal pada bagian naskah tertentu juga dapat diterapkan sesuai instruksi kerja guna memberikan penegasan visual terhadap informasi penting yang sedang dibahas.",
+      "Keterampilan menyusun dokumen yang terstruktur rapi menuntut penguasaan penuh terhadap fungsi-fungsi pengaturan teks pada pita menu aplikasi pengolah kata. Pengguna wajib membiasakan diri untuk memblok seluruh naskah terlebih dahulu sebelum mengubah jenis huruf, ukuran font, perataan paragraf, maupun jarak spasi antar baris. Apabila pengguna mengubah pengaturan tanpa menyeleksi teks yang sudah diketik, maka perubahan format tersebut tidak akan diterapkan pada kalimat yang telah ada di layar kerja. Pemahaman mendasar mengenai prinsip seleksi atau blok teks ini merupakan fondasi utama yang membedakan pengguna komputer yang terampil dengan pengguna pemula yang masih sering mengalami kesulitan teknis.",
+      "Melalui latihan pengetikan empat paragraf langsung dalam satu nomor terpadu ini, siswa diharapkan mampu membangun fokus kerja yang tinggi serta ketelitian yang konsisten. Pastikan setiap paragraf dipisahkan menggunakan satu kali tekanan tombol Enter dan diawali dengan lekukan alinea pertama yang aktif pada penggaris dokumen. Perhatikan pula kesesuaian huruf besar, huruf kecil, serta tanda baca titik dan koma agar sama persis dengan naskah acuan yang ditampilkan di layar. Dengan menyelesaikan seluruh ketikan empat paragraf ini secara akurat, siswa telah membuktikan penguasaan keterampilan literasi digital dan administrasi perkantoran yang sangat dibutuhkan di dunia kerja masa depan."
+    ]
+  },
+  14: {
+    no: 14,
+    title: "Word: Tata Wajah & Kelengkapan Dokumen",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dengan format Underline, Justify, dan Alinea.",
+    theme: "theme-cyan",
+    icon: "🖼",
+    moduleTag: "Microsoft Word • Latihan 14",
+    docTitle: "Latihan_14_Tata_Wajah_Dokumen.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Times New Roman",
+      fontSize: "12",
+      bold: false,
+      italic: false,
+      underline: true,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true
+    },
+    formatLabel: "Font: Times New Roman | Ukuran: 12 pt | Garis Bawah (Underline) | Rata Kiri-Kanan (Justify) | Spasi: 1.5 | Alinea",
+    paragraphs: [
+      "Kelengkapan tata wajah sebuah dokumen panjang seperti buku panduan, modul pelajaran, maupun laporan tahunan sangat ditentukan oleh kerapian pengelolaan setiap halamannya. Pada dokumen yang memiliki puluhan hingga ratusan lembar halaman, keberadaan catatan kepala atau header serta catatan kaki atau footer menjadi elemen navigasi yang amat penting. Bagian header yang terletak di margin atas kertas biasanya memuat judul bab atau identitas instansi, sedangkan bagian footer di margin bawah menampilkan nomor halaman secara berurutan. Dengan adanya penomoran halaman yang teratur, pembaca dapat menemukan letak bab atau topik bahasan yang dicari secara cepat berdasarkan petunjuk pada halaman daftar isi.",
+      "Di samping penggunaan catatan kepala dan kaki halaman, penyusunan naskah publikasi modern juga menuntut keseragaman gaya tipografi dari awal hingga akhir dokumen. Penulis harus memastikan bahwa setiap paragraf memiliki batas perataan kiri dan kanan yang lurus sempurna sehingga membentuk bidang teks yang simetris di tengah halaman kertas. Penggunaan lekukan alinea pada baris pertama setiap paragraf berfungsi sebagai penanda visual yang membantu mata pembaca mengenali pergantian pokok pikiran secara mudah. Apabila seluruh elemen tata wajah halaman ini dipadukan secara harmonis, maka dokumen yang dihasilkan akan memiliki mutu tampilan yang setara dengan terbitan buku cetak profesional.",
+      "Dalam latihan keterampilan mengolah kata tahap keempat belas ini, siswa diminta untuk mengetik satu nomor naskah utuh yang terdiri atas empat paragraf berkesinambungan. Masing-masing paragraf dirancang memiliki panjang sekitar seratus kata agar siswa terbiasa mengelola naskah berukuran standar karya tulis sekolah. Setelah seluruh teks berhasil diketik ke dalam lembar kerja simulator, siswa wajib mengaktifkan fitur blok teks sebelum menerapkan format huruf Times New Roman berukuran dua belas poin beserta atribut garis bawah. Penerapan instruksi pemformatan secara tepat membuktikan bahwa siswa memahami fungsi setiap tombol perintah yang terdapat pada tab Home di jendela aplikasi.",
+      "Ketelitian dalam menjaga akurasi pengetikan huruf demi huruf merupakan sikap kerja utama yang harus terus diasah oleh setiap peserta didik di laboratorium komputer. Hindari kesalahan pengetikan huruf kapital maupun penambahan spasi ganda di antara kata yang dapat mengurangi nilai kerapian dokumen. Manfaatkan indikator pemeriksaan otomatis yang tersedia di bagian bawah lembar kerja untuk memantau jumlah kata dan kesesuaian teks yang sedang diketik secara langsung. Ketika keempat paragraf telah terisi lengkap dan seluruh syarat pemformatan terpenuhi dengan sempurna, tekan tombol periksa jawaban untuk menyimpan perolehan nilai terbaik ke dalam sistem rekapitulasi kelas."
+    ]
+  },
+  15: {
+    no: 15,
+    title: "Word: Penyuntingan & Ketelitian Naskah",
+    subtitle: "Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dengan ketelitian ejaan baku dan format Bold + Italic.",
+    theme: "theme-orange",
+    icon: "🔍",
+    moduleTag: "Microsoft Word • Latihan 15",
+    docTitle: "Latihan_15_Penyuntingan_Naskah.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Georgia",
+      fontSize: "12",
+      bold: true,
+      italic: true,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true
+    },
+    formatLabel: "Font: Georgia | Ukuran: 12 pt | Tebal (Bold) + Miring (Italic) | Justify | Spasi: 1.5 | Alinea (Tab)",
+    paragraphs: [
+      "Penyuntingan naskah atau editing merupakan tahap krusial dalam proses penulisan dokumen ilmiah maupun surat menyurat resmi di lingkungan instansi pemerintah dan swasta. Naskah draf pertama yang baru selesai diketik hampir selalu membutuhkan pemeriksaan ulang untuk memperbaiki kesalahan ketik maupun ketidaktepatan pemilihan kosakata. Dalam kaidah bahasa Indonesia yang baku, penulis wajib menggunakan kata-kata standar sesuai pedoman kamus resmi, seperti menulis kata praktik, aktivitas, analisis, sistem, serta metode secara tepat. Ketelitian seorang penyunting dalam menemukan dan memperbaiki setiap kata tidak baku akan meningkatkan kredibilitas ilmiah dari dokumen laporan yang sedang disusun secara signifikan.",
+      "Seiring bertambahnya jumlah halaman pada sebuah dokumen, proses pemeriksaan kesalahan ketik secara manual baris demi baris tentu membutuhkan waktu serta tenaga yang cukup besar. Untungnya, aplikasi pengolah kata modern telah dilengkapi dengan berbagai fitur bantu penyuntingan otomatis untuk mempercepat pekerjaan pemeriksaan naskah panjang. Meskipun demikian, kecanggihan perangkat lunak tetap tidak dapat menggantikan ketajaman mata dan pemahaman bahasa dari penulis manusia itu sendiri. Seorang penulis yang andal selalu membiasakan diri mengetik dengan cermat sejak kalimat pertama agar meminimalkan munculnya salah ketik yang dapat mengubah makna informasi di dalam paragraf dokumen.",
+      "Selain ketepatan ejaan kata, keseragaman pemformatan tipografi dan tata letak paragraf juga menjadi bagian tak terpisahkan dari kegiatan penyuntingan naskah akhir. Pada latihan kelima belas ini, peserta didik ditantang untuk mengetik empat paragraf panjang secara langsung dalam satu nomor soal terpadu tanpa terputus. Setelah seluruh kalimat selesai diketik dengan akurat, peserta harus memblok naskah tersebut lalu mengubah jenis hurufnya menjadi Georgia berukuran dua belas poin. Selanjutnya, aktifkan kombinasi format cetak tebal dan cetak miring sekaligus, atur perataan paragraf menjadi rata kiri kanan, pilih spasi baris satu koma lima, serta terapkan alinea baris pertama.",
+      "Kedisiplinan mengikuti setiap rincian instruksi pemformatan akan membentuk kebiasaan kerja yang sistematis, rapi, dan berstandar tinggi bagi seluruh siswa peserta pelatihan. Pastikan setiap pergantian paragraf dilakukan menggunakan tombol Enter satu kali sehingga terbentuk empat blok paragraf yang jelas dan seimbang di atas kertas kerja. Periksa kembali bagian awal dan akhir setiap kalimat guna memastikan huruf kapital serta tanda titik telah ditempatkan secara benar tanpa ada kata yang terlewat. Dengan menyelesaikan latihan penyuntingan dan pengetikan naskah empat paragraf ini secara tuntas, kemampuan pengolahan dokumen digital siswa akan semakin matang dan siap diandalkan setiap saat."
+    ]
+  },
+  16: {
+    no: 16,
+    title: "Word: Proyek Dokumen Terpadu (Final)",
+    subtitle: "Ujian akhir Word: Ketik 1 nomor berisi 4 paragraf langsung (±100 kata/paragraf) dengan seluruh format lengkap.",
+    theme: "theme-orange",
+    icon: "🎓",
+    moduleTag: "Microsoft Word • Latihan 16 (Proyek Akhir)",
+    docTitle: "Latihan_16_Proyek_Dokumen_Final.docx",
+    defaultTab: "home",
+    reqs: {
+      fontFamily: "Times New Roman",
+      fontSize: "12",
+      bold: true,
+      italic: false,
+      underline: false,
+      align: "justify",
+      lineSpacing: "1.5",
+      alinea: true,
+      margins: "wide",
+      columns: "2"
+    },
+    formatLabel: "Font: Times New Roman 12 pt | Bold | Justify | Spasi: 1.5 | Alinea (Tab) | Layout Margin: Wide | Columns: Two (2 Kolom)",
+    paragraphs: [
+      "Transformasi digital yang berkembang pesat di abad kedua puluh satu menuntut setiap lulusan sekolah untuk memiliki penguasaan kompetensi teknologi informasi yang tangguh dan menyeluruh. Kemampuan mengoperasikan perangkat lunak pengolah angka maupun pengolah kata bukan lagi sekadar keahlian tambahan, melainkan telah menjadi syarat utama dalam memasuki dunia perguruan tinggi dan dunia kerja profesional. Melalui rangkaian enam belas latihan bertahap pada kelas interaktif ini, peserta didik telah mempelajari berbagai teknik penting mulai dari penulisan rumus perhitungan tabel hingga penyusunan tata letak dokumen resmi. Pengalaman praktik langsung tersebut menjadi bekal berharga untuk menghadapi tantangan zaman modern.",
+      "Dalam penyusunan dokumen karya ilmiah, jurnal penelitian, maupun laporan proyek akhir, ketepatan menerapkan standar tata wajah halaman merupakan indikator utama penilaian kerapian naskah. Banyak jurnal akademik nasional dan internasional mewajibkan penulis mengatur halaman naskahnya ke dalam format dua kolom dengan batas tepi kertas yang terukur secara presisi. Format dua kolom memungkinkan pemuatan teks yang lebih padat dalam satu halaman sekaligus memudahkan mata pembaca menelusuri baris kalimat yang tidak terlalu panjang melebar. Pengaturan kombinasi batas margin lebar dan pembagian kolom ini dapat diterapkan secara cepat melalui menu Layout setelah seluruh teks naskah selesai diketik.",
+      "Selain pengaturan kolom dan batas tepi halaman, konsistensi penggunaan jenis huruf Times New Roman berukuran dua belas poin tetap menjadi standar emas dalam penulisan naskah akademik formal. Setiap paragraf di dalam kolom naskah harus diatur menggunakan perataan kiri dan kanan atau justify agar kedua sisi kolom terlihat lurus dan sejajar rapi. Lekukan alinea pertama pada awal masing-masing paragraf serta jarak spasi satu koma lima baris juga wajib diaktifkan guna menjaga kenyamanan visual pembaca. Seluruh pengaturan tipografi dan paragraf tersebut harus diterapkan setelah pengguna melakukan pemblokan teks secara menyeluruh pada editor dokumen kerja.",
+      "Sebagai proyek penutup pada modul pengolah kata ini, pastikan keempat paragraf di atas diketik secara lengkap, tepat, dan menyatu dalam satu nomor penugasan tanpa kesalahan ejaan sedikit pun. Periksa kembali jumlah kata pada setiap paragraf yang masing-masing dirancang sekitar seratus kata guna menguji ketahanan serta akurasi mengetik tingkat lanjut. Ketika seluruh naskah empat paragraf telah diketik dan semua parameter format dari tab Home hingga tab Layout telah menyala hijau, klik tombol periksa jawaban untuk mengunci nilai sempurna. Selamat atas ketekunan dan keberhasilan Anda menyelesaikan seluruh rangkaian pelatihan komputer interaktif ini dengan prestasi terbaik."
+    ]
+  }
+};
+
+const ALL_EXERCISES = [
+  { no: 1, title: "Membaca Alamat Sel", desc: "Membaca dan menemukan koordinat kolom serta baris pada tabel Excel.", theme: "theme-green", icon: "A1", tag: "Microsoft Excel" },
+  { no: 2, title: "Rumus SUM & AVERAGE", desc: "Menghitung jumlah total dan nilai rata-rata data tabel secara otomatis.", theme: "theme-blue", icon: "∑", tag: "Microsoft Excel" },
+  { no: 3, title: "Ketelitian Ketik Teks & Rumus", desc: "Mengetik ulang kalimat dan sintaks rumus secara presisi.", theme: "theme-cyan", icon: "⌨", tag: "Microsoft Excel" },
+  { no: 4, title: "SUMIF, AVERAGEIF & Multi-Kriteria", desc: "Mengolah rekapitulasi data bersyarat tunggal dan majemuk.", theme: "theme-purple", icon: "fx", tag: "Microsoft Excel" },
+  { no: 5, title: "Logika IF Tunggal & Bertingkat", desc: "Menentukan kelulusan dan predikat nilai menggunakan fungsi logika IF.", theme: "theme-orange", icon: "⇄", tag: "Microsoft Excel" },
+  { no: 6, title: "Pencarian Data VLOOKUP & HLOOKUP", desc: "Mengambil data otomatis dari tabel referensi vertikal dan horizontal.", theme: "theme-blue", icon: "⌕", tag: "Microsoft Excel" },
+  { no: 7, title: "Susun Langkah Algoritma", desc: "Mengurutkan langkah penyelesaian masalah secara logis dan sistematis.", theme: "theme-purple", icon: "123", tag: "Algoritma" },
+  { no: 8, title: "Coding Dasar & Logika Program", desc: "Menulis potongan kode pemrograman dasar dengan sintaks yang tepat.", theme: "theme-cyan", icon: "</>", tag: "Coding Dasar" },
+  ...Object.values(WORD_EXERCISES_9_TO_16).map(w => ({
+    no: w.no,
+    title: w.title,
+    desc: w.subtitle,
+    theme: w.theme,
+    icon: w.icon,
+    tag: w.moduleTag
+  }))
+];
+
+// State penyimpanan pengerjaan latihan 9-16
+const studentState = {
+  scores: {},
+  completed: {},
+  wordState: {}
+};
+
+function getWordExerciseState(exNo) {
+  const cfg = WORD_EXERCISES_9_TO_16[exNo];
+  if (!studentState.wordState[exNo]) {
+    studentState.wordState[exNo] = {
+      activeTab: cfg.defaultTab || "home",
+      fontFamily: "Calibri",
+      fontSize: "11",
+      bold: false,
+      italic: false,
+      underline: false,
+      align: "left",
+      lineSpacing: "1.0",
+      alinea: false,
+      orientation: "portrait",
+      margins: "normal",
+      columns: "1",
+      isBlocked: false,
+      typedText: ""
+    };
+  }
+  return studentState.wordState[exNo];
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.remove("hidden");
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => t.classList.add("hidden"), 2800);
+}
+
+function normalizeText(str) {
+  return String(str || "")
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map(p => p.trim().replace(/\s+/g, " "))
+    .filter(Boolean)
+    .join("\n");
+}
+
+function countWords(str) {
+  const cleaned = String(str || "").trim();
+  if (!cleaned) return 0;
+  return cleaned.split(/\s+/).length;
+}
+
+function evaluateWordExercise(exNo) {
+  const cfg = WORD_EXERCISES_9_TO_16[exNo];
+  const st = getWordExerciseState(exNo);
+  const req = cfg.reqs;
+
+  const targetFull = cfg.paragraphs.map(p => p.trim().replace(/\s+/g, " ")).join("\n");
+  const typedNorm = normalizeText(st.typedText);
+  const typedParas = typedNorm ? typedNorm.split("\n") : [];
+
+  const textExactMatch = typedNorm === targetFull;
+  const paraCountMatch = typedParas.length === 4;
+
+  const checks = [];
+  checks.push({
+    key: "text",
+    label: `Ketikan 1 Nomor (4 Paragraf, ${countWords(st.typedText)}/${countWords(targetFull)} kata)`,
+    ok: textExactMatch && paraCountMatch
+  });
+
+  if (req.fontFamily) {
+    checks.push({ key: "fontFamily", label: `Font: ${req.fontFamily}`, ok: st.fontFamily === req.fontFamily });
+  }
+  if (req.fontSize) {
+    checks.push({ key: "fontSize", label: `Ukuran: ${req.fontSize} pt`, ok: String(st.fontSize) === String(req.fontSize) });
+  }
+  if (req.bold) {
+    checks.push({ key: "bold", label: "Tebal (Bold)", ok: !!st.bold });
+  }
+  if (req.italic) {
+    checks.push({ key: "italic", label: "Miring (Italic)", ok: !!st.italic });
+  }
+  if (req.underline) {
+    checks.push({ key: "underline", label: "Garis Bawah (Underline)", ok: !!st.underline });
+  }
+  if (req.align) {
+    const alignNames = { left: "Rata Kiri", center: "Rata Tengah", right: "Rata Kanan", justify: "Rata Kiri-Kanan (Justify)" };
+    checks.push({ key: "align", label: alignNames[req.align] || req.align, ok: st.align === req.align });
+  }
+  if (req.lineSpacing) {
+    checks.push({ key: "lineSpacing", label: `Spasi Baris: ${req.lineSpacing}`, ok: String(st.lineSpacing) === String(req.lineSpacing) });
+  }
+  if (req.alinea) {
+    checks.push({ key: "alinea", label: "Alinea Baris Pertama (Tab)", ok: !!st.alinea });
+  }
+  if (req.orientation) {
+    checks.push({ key: "orientation", label: `Orientasi: ${req.orientation.toUpperCase()}`, ok: st.orientation === req.orientation });
+  }
+  if (req.margins) {
+    checks.push({ key: "margins", label: `Margin: ${req.margins.toUpperCase()}`, ok: st.margins === req.margins });
+  }
+  if (req.columns) {
+    checks.push({ key: "columns", label: `Kolom: ${req.columns} Kolom`, ok: String(st.columns) === String(req.columns) });
+  }
+
+  const passedCount = checks.filter(c => c.ok).length;
+  const allOk = passedCount === checks.length;
+  const pct = Math.round((passedCount / checks.length) * 100);
+
+  let diffHint = "";
+  if (!st.typedText.trim()) {
+    diffHint = "Ketik langsung ke-4 paragraf di atas pada lembar kerja (pisahkan antar paragraf dengan 1x Enter).";
+  } else if (typedParas.length !== 4) {
+    diffHint = `Jumlah paragraf saat ini: ${typedParas.length} paragraf. Pastikan terdiri atas 4 paragraf langsung (pisahkan dengan Enter).`;
+  } else if (!textExactMatch) {
+    for (let i = 0; i < 4; i++) {
+      const exp = cfg.paragraphs[i].trim().replace(/\s+/g, " ");
+      const act = (typedParas[i] || "").trim().replace(/\s+/g, " ");
+      if (exp !== act) {
+        const expWords = exp.split(" ");
+        const actWords = act.split(" ");
+        let mismatchIdx = expWords.findIndex((w, idx) => w !== actWords[idx]);
+        if (mismatchIdx === -1) mismatchIdx = actWords.length;
+        const expectedWord = expWords[mismatchIdx] || "(akhir paragraf)";
+        const actualWord = actWords[mismatchIdx] || "(belum diketik)";
+        diffHint = `Paragraf ${i + 1} belum persis pada kata ke-${mismatchIdx + 1}: tertulis "${actualWord}", seharusnya "${expectedWord}".`;
+        break;
+      }
+    }
+  } else if (!allOk) {
+    diffHint = "Teks 4 paragraf sudah 100% tepat! Sekarang klik 'Blok Semua Teks' lalu lengkapi format toolbar yang masih kuning.";
+  } else {
+    diffHint = "Sempurna! Ke-4 paragraf dan seluruh pemformatan dokumen telah sesuai.";
+  }
+
+  return { checks, passedCount, totalChecks: checks.length, allOk, pct, diffHint };
+}
+
+function renderStudentGrid() {
+  const nav = document.getElementById("studentExerciseNav");
+  if (!nav) return;
+  nav.innerHTML = ALL_EXERCISES.map(ex => {
+    const score = studentState.scores[ex.no] || 0;
+    const isWord = ex.no >= 9 && ex.no <= 16;
+    return `
+      <button type="button" class="student-window-card ${ex.theme}" data-open-exercise="${ex.no}">
+        <div class="student-window-top">
+          <div class="student-window-icon">${ex.icon}</div>
+          <div class="student-score-badge">
+            <small>NILAI</small>
+            <strong>${score}</strong>
+          </div>
+          <b>Latihan ${ex.no}</b>
+        </div>
+        <span class="student-window-module-tag">${ex.tag}</span>
+        <strong>${ex.title}</strong>
+        <small>${ex.desc}</small>
+        <span class="student-window-action">
+          ${isWord ? "Buka Latihan (1 Nomor 4 Paragraf)" : "Buka Latihan"}
+        </span>
+      </button>
+    `;
+  }).join("");
+
+  nav.querySelectorAll("[data-open-exercise]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const no = Number(btn.getAttribute("data-open-exercise"));
+      openExercise(no);
+    });
+  });
+}
+
+function openExercise(exNo) {
+  const panel = document.getElementById("exercisePanel");
+  if (!panel) return;
+  document.body.classList.add("exercise-window-open");
+  panel.classList.remove("hidden");
+
+  if (exNo >= 9 && exNo <= 16) {
+    renderWordExercise(exNo);
+  } else {
+    renderExcelOrAlgoOverview(exNo);
+  }
+}
+
+function closeExercise() {
+  const panel = document.getElementById("exercisePanel");
+  document.body.classList.remove("exercise-window-open");
+  if (panel) panel.classList.add("hidden");
+  renderStudentGrid();
+}
+
+function renderExcelOrAlgoOverview(exNo) {
+  const ex = ALL_EXERCISES.find(item => item.no === exNo);
+  const panel = document.getElementById("exercisePanel");
+  panel.innerHTML = `
+    <div class="l2-window-header">
+      <button type="button" class="exercise-back-btn" id="backToMenuBtn" title="Kembali">‹</button>
+      <div>
+        <small style="color:#0a8b63;font-weight:800;font-size:12px">LATIHAN ${ex.no} DARI 16</small>
+        <h3 style="margin:4px 0 0;font-size:22px">${ex.title}</h3>
+      </div>
+      <div class="exercise-score-card">
+        <small>NILAI</small>
+        <strong>${studentState.scores[ex.no] || 100}</strong>
+        <span>Modul Interaktif</span>
+      </div>
+      <div class="l2-window-progress">
+        <div><span>Status Modul</span><b>Siap Dikerjakan</b></div>
+        <span><i style="width:100%"></i></span>
+      </div>
+    </div>
+    <div class="l2-layout">
+      <div class="l2-main">
+        <div class="l2-section-card">
+          <h3>Modul Latihan ${ex.no}: ${ex.title}</h3>
+          <p style="color:#587188;line-height:1.6">${ex.desc}</p>
+          <p style="margin-top:12px;padding:12px 14px;background:#effcf5;border:1px solid #88dfb8;border-radius:10px;color:#0a6049;font-size:13px">
+            Tip: Gunakan pemilih di atas atau kembali ke menu utama untuk memeriksa <strong>Latihan 9–16 (Microsoft Word)</strong> yang kini hanya memiliki <strong>1 nomor berisi 4 paragraf langsung (@ ±100 kata) tanpa Poin B</strong>.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+            <button type="button" class="primary-btn" onclick="openExercise(9)">Buka Latihan 9 (Word)</button>
+            <button type="button" class="ghost-btn" onclick="closeExercise()">Kembali ke Daftar Latihan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById("backToMenuBtn").addEventListener("click", closeExercise);
+}
+
+function renderWordExercise(exNo) {
+  const cfg = WORD_EXERCISES_9_TO_16[exNo];
+  const st = getWordExerciseState(exNo);
+  const evalRes = evaluateWordExercise(exNo);
+  const panel = document.getElementById("exercisePanel");
+
+  const wordCountsPerPara = cfg.paragraphs.map(p => countWords(p));
+  const totalTargetWords = wordCountsPerPara.reduce((a, b) => a + b, 0);
+
+  panel.innerHTML = `
+    <div class="l2-window-header">
+      <button type="button" class="exercise-back-btn" id="backToMenuBtn" title="Kembali ke Menu">‹</button>
+      <div>
+        <small style="color:#185abd;font-weight:800;font-size:12px">LATIHAN ${cfg.no} DARI 16 • MICROSOFT WORD (TANPA POIN B)</small>
+        <h3 style="margin:4px 0 0;font-size:22px">${cfg.title}</h3>
+      </div>
+      <div class="exercise-score-card">
+        <small>NILAI</small>
+        <strong id="liveScoreValue">${studentState.scores[exNo] || evalRes.pct}</strong>
+        <span>1 Nomor • 4 Paragraf</span>
+      </div>
+      <div class="l2-window-progress">
+        <div><span>Ketuntasan Naskah & Format</span><b id="livePctText">${evalRes.pct}%</b></div>
+        <span><i id="livePctBar" style="width:${evalRes.pct}%"></i></span>
+      </div>
+    </div>
+
+    <div class="l2-layout">
+      <div class="l2-main">
+        <!-- Hanya Bagian Praktik Pengetikan 1 Nomor 4 Paragraf (Poin B telah dihapus sepenuhnya) -->
+        <div class="l2-section-card">
+          <div class="l2-section-head">
+            <div>
+              <h3>Praktik Dokumen Word — 1 Nomor Berisi 4 Paragraf Langsung (@ ±100 Kata)</h3>
+              <p>Ketik keempat paragraf di bawah ini secara langsung pada satu editor dokumen, lalu blok teks dan terapkan format sesuai instruksi.</p>
+            </div>
+            <span>1 Nomor • ${totalTargetWords} Kata Total</span>
+          </div>
+
+          <div class="msw-window">
+            <div class="msw-titlebar">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="msw-app-logo">W</span>
+                <strong>${cfg.docTitle} — Microsoft Word</strong>
+              </div>
+              <span>AutoSave On</span>
+            </div>
+
+            <div class="msw-ribbon-tabs">
+              <button type="button" class="msw-ribbon-tab ${st.activeTab === 'home' ? 'active' : ''}" data-msw-tab="home">Home</button>
+              <button type="button" class="msw-ribbon-tab ${st.activeTab === 'layout' ? 'active' : ''}" data-msw-tab="layout">Layout</button>
+            </div>
+
+            <div class="msw-ribbon-body">
+              ${st.activeTab === "home" ? `
+                <div class="msw-ribbon-group">
+                  <div class="msw-group-row">
+                    <select class="msw-select" id="mswFontFamily" title="Font Family">
+                      ${["Calibri", "Times New Roman", "Arial", "Georgia"].map(f => `<option value="${f}" ${st.fontFamily === f ? "selected" : ""}>${f}</option>`).join("")}
+                    </select>
+                    <select class="msw-select" id="mswFontSize" title="Font Size">
+                      ${["10", "11", "12", "14", "16"].map(s => `<option value="${s}" ${String(st.fontSize) === s ? "selected" : ""}>${s}</option>`).join("")}
+                    </select>
+                  </div>
+                  <div class="msw-group-row">
+                    <button type="button" class="msw-icon-btn ${st.bold ? 'active' : ''}" data-msw-cmd="bold" title="Bold (Tebal)"><b>B</b></button>
+                    <button type="button" class="msw-icon-btn ${st.italic ? 'active' : ''}" data-msw-cmd="italic" title="Italic (Miring)"><i>I</i></button>
+                    <button type="button" class="msw-icon-btn ${st.underline ? 'active' : ''}" data-msw-cmd="underline" title="Underline (Garis Bawah)"><u>U</u></button>
+                  </div>
+                  <span class="msw-group-caption">Font</span>
+                </div>
+
+                <div class="msw-ribbon-group">
+                  <div class="msw-group-row">
+                    <button type="button" class="msw-icon-btn ${st.align === 'left' ? 'active' : ''}" data-msw-align="left">Rata Kiri</button>
+                    <button type="button" class="msw-icon-btn ${st.align === 'center' ? 'active' : ''}" data-msw-align="center">Tengah</button>
+                    <button type="button" class="msw-icon-btn ${st.align === 'right' ? 'active' : ''}" data-msw-align="right">Rata Kanan</button>
+                    <button type="button" class="msw-icon-btn ${st.align === 'justify' ? 'active' : ''}" data-msw-align="justify">Justify (Kiri-Kanan)</button>
+                  </div>
+                  <div class="msw-group-row">
+                    <select class="msw-select" id="mswLineSpacing" title="Line Spacing">
+                      ${["1.0", "1.15", "1.5", "2.0"].map(ls => `<option value="${ls}" ${String(st.lineSpacing) === ls ? "selected" : ""}>Spasi ${ls}</option>`).join("")}
+                    </select>
+                    <button type="button" class="msw-icon-btn ${st.alinea ? 'active' : ''}" data-msw-cmd="alinea" title="Alinea Baris Pertama (Tab)">⇥ Alinea (Tab)</button>
+                  </div>
+                  <span class="msw-group-caption">Paragraph</span>
+                </div>
+              ` : `
+                <div class="msw-ribbon-group">
+                  <div class="msw-group-row">
+                    <button type="button" class="msw-icon-btn ${st.margins === 'normal' ? 'active' : ''}" data-msw-margin="normal">Margin Normal</button>
+                    <button type="button" class="msw-icon-btn ${st.margins === 'narrow' ? 'active' : ''}" data-msw-margin="narrow">Margin Narrow</button>
+                    <button type="button" class="msw-icon-btn ${st.margins === 'wide' ? 'active' : ''}" data-msw-margin="wide">Margin Wide</button>
+                  </div>
+                  <span class="msw-group-caption">Margins</span>
+                </div>
+                <div class="msw-ribbon-group">
+                  <div class="msw-group-row">
+                    <button type="button" class="msw-icon-btn ${st.orientation === 'portrait' ? 'active' : ''}" data-msw-orient="portrait">Portrait</button>
+                    <button type="button" class="msw-icon-btn ${st.orientation === 'landscape' ? 'active' : ''}" data-msw-orient="landscape">Landscape</button>
+                  </div>
+                  <span class="msw-group-caption">Orientation</span>
+                </div>
+                <div class="msw-ribbon-group">
+                  <div class="msw-group-row">
+                    <button type="button" class="msw-icon-btn ${String(st.columns) === '1' ? 'active' : ''}" data-msw-cols="1">1 Kolom</button>
+                    <button type="button" class="msw-icon-btn ${String(st.columns) === '2' ? 'active' : ''}" data-msw-cols="2">2 Kolom (Two)</button>
+                  </div>
+                  <span class="msw-group-caption">Columns</span>
+                </div>
+              `}
+            </div>
+
+            <div class="msw-workspace">
+              <div class="msw-page ${st.orientation === 'landscape' ? 'landscape' : ''} ${st.margins === 'narrow' ? 'margin-narrow' : st.margins === 'wide' ? 'margin-wide' : ''} ${String(st.columns) === '2' ? 'cols-2' : ''}" id="mswPaperCanvas">
+                <div class="msw-doc-block ${evalRes.allOk ? 'completed' : ''}" id="mswSingleDocBlock">
+                  <div class="msw-doc-block-header">
+                    <div class="msw-doc-block-title">
+                      <span class="msw-doc-num-pill">1</span>
+                      <span>Naskah Dokumen (4 Paragraf Langsung • ${wordCountsPerPara.map((c, i) => `P${i+1}: ${c} kata`).join(" | ")})</span>
+                    </div>
+                    <div style="display:flex;gap:8px;align-items:center">
+                      <button type="button" class="msw-block-btn ${st.isBlocked ? 'is-blocked' : ''}" id="mswBlockTextBtn">
+                        ${st.isBlocked ? "✓ Teks Diblok (Siap Format)" : "Blok Semua Teks"}
+                      </button>
+                      <button type="button" class="ghost-btn" id="mswFillSampleBtn" style="padding:5px 10px;font-size:11px" title="Salin teks contoh untuk menguji pemformatan">
+                        Isi Cepat 4 Paragraf (Demo)
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="msw-doc-target-prompt">
+                    <span class="prompt-badge">Target Ketikan & Format: ${cfg.formatLabel}</span>
+                    <div class="msw-target-paragraphs">
+                      ${cfg.paragraphs.map(p => `<p>${p}</p>`).join("")}
+                    </div>
+                  </div>
+
+                  <textarea
+                    id="mswEditorTextarea"
+                    class="msw-live-editor ${st.isBlocked ? 'is-blocked' : ''} ${st.alinea ? 'has-alinea' : ''}"
+                    placeholder="Ketik langsung 4 paragraf di atas di sini (pisahkan antar paragraf dengan menekan Enter 1 kali)..."
+                    style="font-family:'${st.fontFamily}',sans-serif;font-size:${Number(st.fontSize) + 2}px;font-weight:${st.bold ? '700' : '400'};font-style:${st.italic ? 'italic' : 'normal'};text-decoration:${st.underline ? 'underline' : 'none'};text-align:${st.align};line-height:${st.lineSpacing}"
+                  >${st.typedText}</textarea>
+
+                  <div id="mswDiffHelper" class="msw-diff-helper ${evalRes.allOk ? 'ok' : 'warn'}">
+                    ${evalRes.diffHint}
+                  </div>
+
+                  <div id="mswCheckPills" class="msw-check-pills">
+                    ${evalRes.checks.map(c => `<span class="msw-check-pill ${c.ok ? 'ok' : 'pending'}">${c.ok ? '✓' : '○'} ${c.label}</span>`).join("")}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="msw-statusbar">
+              <span>Halaman 1 dari 1 • 1 Nomor (4 Paragraf)</span>
+              <span id="mswWordCounter">${countWords(st.typedText)} / ${totalTargetWords} Kata</span>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <button type="button" class="l2-check-all" id="verifyWordExerciseBtn">
+              ✓ Periksa & Simpan Nilai Latihan ${cfg.no}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="l2-sidebar">
+        <div class="l2-participant">
+          <small>PESERTA AKTIF</small>
+          <h4>Siswa Kelas Interaktif</h4>
+          <p>Latihan ${cfg.no}: Hanya 1 Nomor (4 Paragraf @ ±100 Kata) tanpa Poin B.</p>
+          <button type="button" id="sidebarBackBtn">Kembali ke Menu Utama</button>
+        </div>
+
+        <div class="l2-side-card">
+          <h4 style="margin:0 0 12px">Navigasi Latihan Word (9–16)</h4>
+          <div style="display:grid;gap:8px">
+            ${Object.values(WORD_EXERCISES_9_TO_16).map(w => `
+              <button type="button" class="ghost-btn" style="text-align:left;padding:9px 12px;font-size:12px;border-color:${w.no === exNo ? '#185abd' : '#dce5e1'};background:${w.no === exNo ? '#eef4ff' : '#fff'}" onclick="openExercise(${w.no})">
+                <b>Latihan ${w.no}:</b> ${w.title.replace('Word: ', '')}
+              </button>
+            `).join("")}
+          </div>
+        </div>
+
+        <div class="l2-quick-tip">
+          <h4 style="margin:0 0 8px">Panduan Pengerjaan</h4>
+          <p style="margin:0;font-size:12.5px;line-height:1.6;color:#334e68">
+            1. Ketik ke-4 paragraf secara berurutan di dalam kotak dokumen (pisahkan dengan tombol <strong>Enter</strong>).<br/>
+            2. Klik tombol <strong>Blok Semua Teks</strong> sebelum memilih jenis huruf, ukuran, perataan, dan spasi.<br/>
+            3. Tekan tombol <strong>Tab</strong> atau klik tombol <strong>Alinea (Tab)</strong> untuk membuat baris pertama menjorok ke dalam.
+          </p>
+        </div>
+      </aside>
+    </div>
+  `;
+
+  bindWordExerciseEvents(exNo);
+}
+
+function updateLiveFeedbackOnly(exNo) {
+  const cfg = WORD_EXERCISES_9_TO_16[exNo];
+  const st = getWordExerciseState(exNo);
+  const evalRes = evaluateWordExercise(exNo);
+  const totalTargetWords = cfg.paragraphs.reduce((acc, p) => acc + countWords(p), 0);
+
+  const scoreEl = document.getElementById("liveScoreValue");
+  const pctTextEl = document.getElementById("livePctText");
+  const pctBarEl = document.getElementById("livePctBar");
+  const diffEl = document.getElementById("mswDiffHelper");
+  const pillsEl = document.getElementById("mswCheckPills");
+  const wordCounterEl = document.getElementById("mswWordCounter");
+  const blockContainer = document.getElementById("mswSingleDocBlock");
+
+  if (scoreEl) scoreEl.textContent = evalRes.pct;
+  if (pctTextEl) pctTextEl.textContent = `${evalRes.pct}%`;
+  if (pctBarEl) pctBarEl.style.width = `${evalRes.pct}%`;
+  if (diffEl) {
+    diffEl.textContent = evalRes.diffHint;
+    diffEl.className = `msw-diff-helper ${evalRes.allOk ? "ok" : "warn"}`;
+  }
+  if (pillsEl) {
+    pillsEl.innerHTML = evalRes.checks
+      .map(c => `<span class="msw-check-pill ${c.ok ? "ok" : "pending"}">${c.ok ? "✓" : "○"} ${c.label}</span>`)
+      .join("");
+  }
+  if (wordCounterEl) {
+    wordCounterEl.textContent = `${countWords(st.typedText)} / ${totalTargetWords} Kata`;
+  }
+  if (blockContainer) {
+    blockContainer.classList.toggle("completed", evalRes.allOk);
+  }
+}
+
+function bindWordExerciseEvents(exNo) {
+  const cfg = WORD_EXERCISES_9_TO_16[exNo];
+  const st = getWordExerciseState(exNo);
+
+  document.getElementById("backToMenuBtn")?.addEventListener("click", closeExercise);
+  document.getElementById("sidebarBackBtn")?.addEventListener("click", closeExercise);
+
+  const editor = document.getElementById("mswEditorTextarea");
+  if (editor) {
+    editor.addEventListener("input", () => {
+      st.typedText = editor.value;
+      updateLiveFeedbackOnly(exNo);
+    });
+    editor.addEventListener("keydown", e => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        st.alinea = true;
+        editor.classList.add("has-alinea");
+        showToast("Alinea baris pertama (Tab) diaktifkan.");
+        updateLiveFeedbackOnly(exNo);
+      }
+    });
+    editor.addEventListener("select", () => {
+      if (editor.selectionEnd - editor.selectionStart >= Math.max(10, editor.value.length * 0.5)) {
+        st.isBlocked = true;
+        editor.classList.add("is-blocked");
+        const blockBtn = document.getElementById("mswBlockTextBtn");
+        if (blockBtn) {
+          blockBtn.classList.add("is-blocked");
+          blockBtn.textContent = "✓ Teks Diblok (Siap Format)";
+        }
+      }
+    });
+  }
+
+  document.getElementById("mswBlockTextBtn")?.addEventListener("click", () => {
+    st.isBlocked = !st.isBlocked;
+    renderWordExercise(exNo);
+  });
+
+  document.getElementById("mswFillSampleBtn")?.addEventListener("click", () => {
+    st.typedText = cfg.paragraphs.join("\n");
+    st.isBlocked = true;
+    renderWordExercise(exNo);
+    showToast("Ke-4 paragraf telah diisi. Silakan atur format Font/Paragraf/Layout pada pita menu.");
+  });
+
+  document.querySelectorAll("[data-msw-tab]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      st.activeTab = btn.getAttribute("data-msw-tab");
+      renderWordExercise(exNo);
+    });
+  });
+
+  function requireBlockedText() {
+    if (!st.isBlocked) {
+      showToast("Blok teks terlebih dahulu dengan menekan tombol 'Blok Semua Teks'!");
+      const b = document.getElementById("mswBlockTextBtn");
+      if (b) {
+        b.classList.add("pulse-warn");
+        setTimeout(() => b.classList.remove("pulse-warn"), 1500);
+      }
+      return false;
+    }
+    return true;
+  }
+
+  document.getElementById("mswFontFamily")?.addEventListener("change", e => {
+    if (!requireBlockedText()) {
+      e.target.value = st.fontFamily;
+      return;
+    }
+    st.fontFamily = e.target.value;
+    renderWordExercise(exNo);
+  });
+
+  document.getElementById("mswFontSize")?.addEventListener("change", e => {
+    if (!requireBlockedText()) {
+      e.target.value = st.fontSize;
+      return;
+    }
+    st.fontSize = e.target.value;
+    renderWordExercise(exNo);
+  });
+
+  document.getElementById("mswLineSpacing")?.addEventListener("change", e => {
+    if (!requireBlockedText()) {
+      e.target.value = st.lineSpacing;
+      return;
+    }
+    st.lineSpacing = e.target.value;
+    renderWordExercise(exNo);
+  });
+
+  document.querySelectorAll("[data-msw-cmd]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cmd = btn.getAttribute("data-msw-cmd");
+      if (cmd !== "alinea" && !requireBlockedText()) return;
+      st[cmd] = !st[cmd];
+      renderWordExercise(exNo);
+    });
+  });
+
+  document.querySelectorAll("[data-msw-align]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (!requireBlockedText()) return;
+      st.align = btn.getAttribute("data-msw-align");
+      renderWordExercise(exNo);
+    });
+  });
+
+  document.querySelectorAll("[data-msw-margin]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      st.margins = btn.getAttribute("data-msw-margin");
+      renderWordExercise(exNo);
+    });
+  });
+
+  document.querySelectorAll("[data-msw-orient]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      st.orientation = btn.getAttribute("data-msw-orient");
+      renderWordExercise(exNo);
+    });
+  });
+
+  document.querySelectorAll("[data-msw-cols]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      st.columns = btn.getAttribute("data-msw-cols");
+      renderWordExercise(exNo);
+    });
+  });
+
+  document.getElementById("verifyWordExerciseBtn")?.addEventListener("click", () => {
+    const res = evaluateWordExercise(exNo);
+    studentState.scores[exNo] = res.pct;
+    if (res.allOk) {
+      studentState.completed[exNo] = true;
+      showToast(`Selamat! Latihan ${exNo} selesai dengan nilai 100.`);
+    } else {
+      showToast(`Nilai saat ini: ${res.pct}. Lengkapi bagian yang masih bertanda kuning.`);
+    }
+    updateLiveFeedbackOnly(exNo);
+  });
+}
+
+document.getElementById("quickJumpSelect")?.addEventListener("change", e => {
+  const val = Number(e.target.value);
+  if (val) openExercise(val);
+});
+
+renderStudentGrid();
+  </script>
+</body>
+</html>
