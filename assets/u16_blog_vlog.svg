@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 390" width="920" height="390">
+  <rect width="920" height="390" rx="24" fill="#f8faff" stroke="#d6e4f7" stroke-width="2"/>
+  <text x="36" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#17325c">Struktur Umum Blog (5 Bagian) &amp; Alur Produksi Vlog (Halaman 25–31)</text>
+  <text x="36" y="68" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#526a8c">Blog menyajikan artikel secara kronologis terbalik, sedangkan Vlog menyampaikan konten melalui video dan audio.</text>
+
+  <!-- Struktur Blog -->
+  <g transform="translate(36,88)">
+    <rect x="0" y="0" width="410" height="270" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#17325c">A. Tata Letak Struktur Umum Blog</text>
+    <rect x="20" y="42" width="370" height="36" rx="8" fill="#dbeafe" stroke="#60a5fa"/>
+    <text x="205" y="65" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#1e40af">1. HEADER (Judul Blog, Slogan/Tagline, Logo)</text>
+    <rect x="20" y="84" width="370" height="28" rx="7" fill="#e0e7ff" stroke="#818cf8"/>
+    <text x="205" y="103" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#3730a3">2. MENU NAVIGASI (Beranda • Kategori • Tentang • Kontak)</text>
+    <rect x="20" y="118" width="246" height="96" rx="8" fill="#f0fdf4" stroke="#4ade80"/>
+    <text x="143" y="154" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#166534">3. MAIN CONTENT (Isi Utama)</text>
+    <text x="143" y="176" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#15803d">Artikel terbaru tampil paling atas</text>
+    <text x="143" y="194" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#15803d">(Urutan Kronologis Terbalik)</text>
+    <rect x="274" y="118" width="116" height="96" rx="8" fill="#fffbeb" stroke="#fbbf24"/>
+    <text x="332" y="152" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="800" fill="#92400e">4. SIDEBAR</text>
+    <text x="332" y="172" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#b45309">Widget Arsip,</text>
+    <text x="332" y="188" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#b45309">Populer &amp; Cari</text>
+    <rect x="20" y="220" width="370" height="34" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="205" y="242" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#334155">5. FOOTER (Hak Cipta/Copyright, Privasi, Media Sosial)</text>
+  </g>
+
+  <!-- Alur Vlog -->
+  <g transform="translate(470,88)">
+    <rect x="0" y="0" width="414" height="270" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#17325c">B. 6 Langkah Pembuatan Vlog (Halaman 30–31)</text>
+    <rect x="20" y="44" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">1. Menentukan tema/topik (Daily, Travel, atau Edukasi)</text>
+    <rect x="20" y="80" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="100" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">2. Menyusun naskah / alur cerita (storyline)</text>
+    <rect x="20" y="116" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="136" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">3. Menyiapkan alat (kamera, mikrofon, tripod) &amp; lokasi</text>
+    <rect x="20" y="152" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="172" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">4. Melakukan perekaman (bahasa sopan &amp; ekspresif)</text>
+    <rect x="20" y="188" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="208" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">5. Menyunting video (editing: CapCut / KineMaster / Premiere)</text>
+    <rect x="20" y="224" width="374" height="30" rx="7" fill="#eff6ff"/><text x="32" y="244" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1e3a8a">6. Mengunggah ke platform disertai judul, deskripsi &amp; tag</text>
+  </g>
+</svg>

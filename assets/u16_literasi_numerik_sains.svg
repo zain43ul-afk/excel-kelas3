@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340">
+  <rect width="920" height="340" rx="24" fill="#f7faff" stroke="#d6e4f7" stroke-width="2"/>
+  <text x="36" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#17325c">Literasi Numerik dan Literasi Sains dalam Pemrograman (Halaman 44–47)</text>
+  <text x="36" y="68" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#526a8c">Mengolah data kuantitatif dengan operasi matematika serta menguji hipotesis program secara ilmiah.</text>
+
+  <g transform="translate(36,92)">
+    <rect x="0" y="0" width="412" height="216" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" fill="#1e40af">A. 4 Konsep Literasi Numerik (Hal. 45)</text>
+    <text x="20" y="60" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">1. Bilangan &amp; Aritmetika: +, -, *, / untuk indeks &amp; hitung</text>
+    <text x="20" y="88" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">2. Perbandingan &amp; Logika: ==, !=, &gt;, &lt;, &gt;=, &lt;=, and, or, not</text>
+    <text x="20" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">3. Variabel &amp; Tipe Data: Bilangan bulat (int) &amp; desimal (float)</text>
+    <text x="20" y="144" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">4. Statistik Sederhana: Total, Rata-rata, Maksimum, Minimum</text>
+    <rect x="20" y="162" width="372" height="36" rx="8" fill="#eff6ff"/>
+    <text x="206" y="185" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#1d4ed8">Menunjang logika algoritmik &amp; struktur kontrol (if/loop)</text>
+
+    <rect x="436" y="0" width="412" height="216" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <text x="456" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" fill="#047857">B. 3 Tahap Literasi Sains (Hal. 46)</text>
+    <text x="456" y="62" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">1. Pengamatan &amp; Identifikasi Masalah secara objektif</text>
+    <text x="456" y="94" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">2. Perumusan Hipotesis &amp; Prediksi Hasil (input → output)</text>
+    <text x="456" y="126" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#334155">3. Eksperimen &amp; Simulasi Digital untuk verifikasi bukti</text>
+    <rect x="456" y="162" width="372" height="36" rx="8" fill="#ecfdf5"/>
+    <text x="642" y="185" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#047857">Melatih berpikir kritis, sistematis, dan berbasis data</text>
+  </g>
+</svg>

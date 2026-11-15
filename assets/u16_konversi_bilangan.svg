@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 390" width="920" height="390">
+  <rect width="920" height="390" rx="24" fill="#f6f9ff" stroke="#d6e4f7" stroke-width="2"/>
+  <text x="36" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#17325c">Konversi Sistem Bilangan dengan Pembagian Berulang (Halaman 49–51)</text>
+  <text x="36" y="68" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#526a8c">Bagi bilangan desimal dengan basis tujuan secara berulang hingga hasil bagi = 0, lalu susun sisa dari bawah ke atas.</text>
+
+  <g transform="translate(32,90)">
+    <rect x="0" y="0" width="272" height="266" rx="16" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#1d4ed8">1. Desimal ke Biner (Basis 2)</text>
+    <text x="20" y="52" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Contoh: Konversi 25₁₀ ke Biner</text>
+    <text x="20" y="82" font-family="Consolas, monospace" font-size="13" fill="#1e293b">25 ÷ 2 = 12  sisa 1  (awal)</text>
+    <text x="20" y="106" font-family="Consolas, monospace" font-size="13" fill="#1e293b">12 ÷ 2 =  6  sisa 0</text>
+    <text x="20" y="130" font-family="Consolas, monospace" font-size="13" fill="#1e293b"> 6 ÷ 2 =  3  sisa 0</text>
+    <text x="20" y="154" font-family="Consolas, monospace" font-size="13" fill="#1e293b"> 3 ÷ 2 =  1  sisa 1</text>
+    <text x="20" y="178" font-family="Consolas, monospace" font-size="13" fill="#1e293b"> 1 ÷ 2 =  0  sisa 1  (akhir)</text>
+    <rect x="20" y="202" width="232" height="44" rx="10" fill="#dbeafe"/>
+    <text x="136" y="229" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="800" fill="#1e3a8a">Hasil: 25₁₀ = 11001₂</text>
+
+    <rect x="292" y="0" width="272" height="266" rx="16" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <text x="312" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#047857">2. Desimal ke Oktal (Basis 8)</text>
+    <text x="312" y="52" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Contoh: Konversi 100₁₀ ke Oktal</text>
+    <text x="312" y="90" font-family="Consolas, monospace" font-size="13" fill="#1e293b">100 ÷ 8 = 12  sisa 4</text>
+    <text x="312" y="122" font-family="Consolas, monospace" font-size="13" fill="#1e293b"> 12 ÷ 8 =  1  sisa 4</text>
+    <text x="312" y="154" font-family="Consolas, monospace" font-size="13" fill="#1e293b">  1 ÷ 8 =  0  sisa 1</text>
+    <text x="312" y="182" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#64748b">*Tiap 1 digit oktal = 3 bit biner</text>
+    <rect x="312" y="202" width="232" height="44" rx="10" fill="#d1fae5"/>
+    <text x="428" y="229" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="800" fill="#065f46">Hasil: 100₁₀ = 144₈</text>
+
+    <rect x="584" y="0" width="272" height="266" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <text x="604" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#5b21b6">3. Desimal ke Heksa (Basis 16)</text>
+    <text x="604" y="52" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Contoh: Konversi 254₁₀ ke Heksa</text>
+    <text x="604" y="90" font-family="Consolas, monospace" font-size="13" fill="#1e293b">254 ÷ 16 = 15 sisa 14 (E)</text>
+    <text x="604" y="122" font-family="Consolas, monospace" font-size="13" fill="#1e293b"> 15 ÷ 16 =  0 sisa 15 (F)</text>
+    <text x="604" y="160" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#64748b">Huruf: A=10, B=11, C=12,</text>
+    <text x="604" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#64748b">D=13, E=14, F=15</text>
+    <rect x="604" y="202" width="232" height="44" rx="10" fill="#ede9fe"/>
+    <text x="720" y="229" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="800" fill="#4c1d95">Hasil: 254₁₀ = FE₁₆</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380">
+  <rect width="920" height="380" rx="24" fill="#f5f9ff" stroke="#d6e4f7" stroke-width="2"/>
+  <text x="36" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#17325c">Integrasi Konten Aplikasi Perkantoran: Embed vs Link (Halaman 22–24)</text>
+  <text x="36" y="68" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#526a8c">Menggabungkan tabel/grafik Excel, dokumen Word, dan slide PowerPoint agar menghasilkan laporan utuh.</text>
+
+  <g transform="translate(36,92)">
+    <rect x="0" y="0" width="230" height="118" rx="16" fill="#ffffff" stroke="#b9d5f8" stroke-width="1.5"/>
+    <rect x="18" y="16" width="44" height="44" rx="10" fill="#1d6f42"/><text x="40" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">X</text>
+    <text x="74" y="34" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#17325c">Spreadsheet (Excel)</text>
+    <text x="74" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">Tabel angka, rumus,</text>
+    <text x="74" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">dan grafik statistik</text>
+
+    <rect x="308" y="0" width="230" height="118" rx="16" fill="#ffffff" stroke="#b9d5f8" stroke-width="1.5"/>
+    <rect x="326" y="16" width="44" height="44" rx="10" fill="#185abd"/><text x="348" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">W</text>
+    <text x="382" y="34" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#17325c">Pengolah Kata (Word)</text>
+    <text x="382" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">Laporan tertulis, surat,</text>
+    <text x="382" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">makalah &amp; proposal</text>
+
+    <rect x="616" y="0" width="232" height="118" rx="16" fill="#ffffff" stroke="#b9d5f8" stroke-width="1.5"/>
+    <rect x="634" y="16" width="44" height="44" rx="10" fill="#d24726"/><text x="656" y="45" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">P</text>
+    <text x="690" y="34" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#17325c">Presentasi (PowerPoint)</text>
+    <text x="690" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">Slide visual, grafik,</text>
+    <text x="690" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#526a8c">dan paparan audiens</text>
+
+    <line x1="238" y1="59" x2="298" y2="59" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 4"/>
+    <line x1="546" y1="59" x2="606" y2="59" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 4"/>
+  </g>
+
+  <g transform="translate(36,230)">
+    <rect x="0" y="0" width="412" height="118" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="20" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#1e40af">1. Embed (Penyematan Langsung / Statis)</text>
+    <text x="20" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">• Menyimpan seluruh objek langsung di dalam dokumen.</text>
+    <text x="20" y="76" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">• Mandiri (tidak butuh file sumber), namun tidak ikut</text>
+    <text x="20" y="96" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">  berubah otomatis saat file Excel sumber diperbarui.</text>
+
+    <rect x="436" y="0" width="412" height="118" rx="16" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+    <text x="456" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#065f46">2. Link (Tautan Dinamis ke File Sumber)</text>
+    <text x="456" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">• Menghubungkan grafik/tabel di Word/PPT ke file Excel asli.</text>
+    <text x="456" y="76" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">• Setiap perubahan angka di Excel akan memperbarui</text>
+    <text x="456" y="96" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">  tampilan grafik di dokumen/presentasi secara otomatis.</text>
+  </g>
+</svg>

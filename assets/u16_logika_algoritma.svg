@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 390" width="920" height="390">
+  <rect width="920" height="390" rx="24" fill="#f7faff" stroke="#d6e4f7" stroke-width="2"/>
+  <text x="36" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#17325c">Operator Logika (AND, OR, NOT) &amp; Elemen Algoritma (Halaman 7–13)</text>
+  <text x="36" y="68" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#526a8c">Ekspresi logika menghasilkan nilai boolean (Benar/Salah) untuk mengendalikan percabangan dan perulangan.</text>
+
+  <!-- 3 Kartu Operator -->
+  <g transform="translate(32,88)">
+    <rect x="0" y="0" width="268" height="132" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <rect x="16" y="14" width="110" height="24" rx="12" fill="#e6f0ff"/>
+    <text x="71" y="30" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#1e5bb8">AND (Simbol &amp;&amp; / ∧)</text>
+    <text x="16" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#1e293b">Bernilai BENAR hanya jika</text>
+    <text x="16" y="78" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#1e5bb8">SEMUA kondisi bernilai Benar.</text>
+    <text x="16" y="106" font-family="Consolas, monospace" font-size="12" fill="#475569">Benar AND Salah → SALAH</text>
+
+    <rect x="292" y="0" width="268" height="132" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <rect x="308" y="14" width="110" height="24" rx="12" fill="#edfcf5"/>
+    <text x="363" y="30" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#147a4d">OR (Simbol || / ∨)</text>
+    <text x="308" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#1e293b">Bernilai BENAR jika</text>
+    <text x="308" y="78" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#147a4d">MINIMAL SATU kondisi Benar.</text>
+    <text x="308" y="106" font-family="Consolas, monospace" font-size="12" fill="#475569">Benar OR Salah  → BENAR</text>
+
+    <rect x="584" y="0" width="272" height="132" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+    <rect x="600" y="14" width="124" height="24" rx="12" fill="#fff3e2"/>
+    <text x="662" y="30" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="800" fill="#c25e09">NOT (Simbol ! / ¬)</text>
+    <text x="600" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#1e293b">Operator unari (1 kondisi):</text>
+    <text x="600" y="78" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#c25e09">MEMBALIK nilai kebenaran.</text>
+    <text x="600" y="106" font-family="Consolas, monospace" font-size="12" fill="#475569">NOT(Benar) → SALAH</text>
+  </g>
+
+  <!-- Alur Tiga Elemen & Representasi Algoritma -->
+  <rect x="32" y="238" width="856" height="122" rx="16" fill="#ffffff" stroke="#cfe0f5" stroke-width="1.5"/>
+  <text x="52" y="266" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#17325c">3 Elemen Dasar &amp; 3 Bentuk Representasi Algoritma (Halaman 12–13)</text>
+  <g transform="translate(52,280)">
+    <rect x="0" y="0" width="248" height="60" rx="12" fill="#f0f6ff" stroke="#b9d3f8"/>
+    <text x="124" y="24" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#1e40af">1. Sekuensial (Urutan)</text>
+    <text x="124" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">Deskripsi Naratif (Bahasa Manusia)</text>
+
+    <rect x="284" y="0" width="248" height="60" rx="12" fill="#f5f3ff" stroke="#d4c6fb"/>
+    <text x="408" y="24" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#5b21b6">2. Percabangan (If-Else)</text>
+    <text x="408" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">Pseudocode (Kode Semu Terstruktur)</text>
+
+    <rect x="568" y="0" width="248" height="60" rx="12" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="692" y="24" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#065f46">3. Perulangan (Looping)</text>
+    <text x="692" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">Flowchart (Diagram Simbol Grafis)</text>
+  </g>
+</svg>
